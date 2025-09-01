@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Cinzel', serif;
+  padding: 1rem;
+
+  .archive-back-button {
+    position: absolute;
+        top: 2rem;
+        left: 2rem;
+        color: #5A3E2B;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+
+        &:hover {
+          color: #A47148;
+          transform: translateX(-3px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+      
+        &:active {
+          transform: translateY(0);
+        }
+  }
+
+  .login-form {
+    background: radial-gradient(circle at top, #f7f2ee, #e9dfd5);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    animation: fadeInUp 0.9s ease-out;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #5A3E2B;
+    }
+
+    p {
+      &.error {
+        color: #b3261e;
+        background: #fdecea;
+        border: 1px solid #f5c2c0;
+        padding: 0.6rem;
+        border-radius: 0.6rem;
+        margin-bottom: 1rem;
+      }
+
+      &.success {
+        color: #1e7e34;
+        background: #e6f4ea;
+        border: 1px solid #b7dfb9;
+        padding: 0.6rem;
+        border-radius: 0.6rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      margin: 0.6rem 0;
+      border: 1px solid #d6c2b8;
+      border-radius: 0.8rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #A47148;
+        box-shadow: 0 0 6px rgba(164, 113, 72, 0.6);
+      }
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1rem;
+      background: linear-gradient(90deg, #8B5E3C, #A47148);
+      color: #fff;
+      border: none;
+      border-radius: 0.8rem;
+      padding: 1rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover:not(:disabled) {
+        background: linear-gradient(90deg, #A47148, #C68642);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(164, 113, 72, 0.3);
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    .login-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+
+      span {
+        font-size: 0.9rem;
+        color: #3B2F2F;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          color: #A47148;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+/* Animacija ulaska */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsivnost */
+@media (max-width: 768px) {
+  .login-form {
+    padding: 2rem;
+
+    h2 {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 1.5rem;
+    border-radius: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    input,
+    button {
+      font-size: 0.95rem;
+      padding: 0.8rem;
+    }
+
+    .login-links {
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: center;
+    }
+  }
+}

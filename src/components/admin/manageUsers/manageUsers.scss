@@ -1,0 +1,475 @@
+$primary-color: #a47148;
+$secondary-color: #8b5e3c;
+$success-color: #4cc9f0;
+$warning-color: #f72585;
+$danger-color: #e63946;
+$light-color: #f8f9fa;
+$dark-color: #212529;
+$border-color: #e9ecef;
+$subscription-active: #38b000;
+$subscription-inactive: #6c757d;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin fade-in($duration: 0.3s) {
+  animation: fadeIn $duration ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.manage-users {
+  padding: 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
+  @include fade-in(0.5s);
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid $border-color;
+
+    h1 {
+      margin: 0;
+      color: $dark-color;
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, $primary-color, $secondary-color);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stats {
+      font-size: 1.1rem;
+      color: lighten($dark-color, 20%);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      background: $light-color;
+      border-radius: 20px;
+    }
+  }
+
+  .filters-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+
+    h3 {
+      margin: 0 0 1rem 0;
+      color: $dark-color;
+      font-size: 1.3rem;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      .filter-group {
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+          color: $dark-color;
+        }
+
+        input, select {
+          width: 100%;
+          padding: 0.75rem;
+          border: 2px solid $border-color;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: border-color 0.2s ease;
+
+          &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+          }
+        }
+      }
+    }
+
+    .filter-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+
+      button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &.btn-reset {
+          background: $light-color;
+          color: $dark-color;
+
+          &:hover {
+            background: darken($light-color, 5%);
+          }
+        }
+
+        &.btn-apply {
+          background: linear-gradient(45deg, $primary-color, $secondary-color);
+          color: white;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+          }
+        }
+      }
+    }
+  }
+
+  .users-table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+
+    .users-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1000px;
+
+      th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid $border-color;
+        font-size: 0.9rem;
+      }
+
+      th {
+        background: linear-gradient(45deg, $primary-color, $secondary-color);
+        color: white;
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+      }
+
+      tr {
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: lighten($light-color, 2%);
+        }
+
+        &.admin-row {
+          background-color: rgba(#4361ee, 0.05);
+        }
+      }
+
+      .role-badge, .premium-badge, .verified-badge, .subscription-badge, .expiry-badge {
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .role-badge {
+        &.admin {
+          background: linear-gradient(45deg, #4361ee, #3a0ca3);
+          color: white;
+        }
+        &.user {
+          background: $light-color;
+          color: $dark-color;
+        }
+      }
+
+      .premium-badge {
+        &.premium {
+          background: linear-gradient(45deg, #ffd700, #ffaa00);
+          color: #000;
+        }
+        &.non-premium {
+          background: $light-color;
+          color: $dark-color;
+        }
+      }
+
+      .verified-badge {
+        &.verified {
+          background: linear-gradient(45deg, $success-color, darken($success-color, 15%));
+          color: white;
+        }
+        &.not-verified {
+          background: $light-color;
+          color: $dark-color;
+        }
+      }
+
+      .subscription-badge {
+        &.active {
+          background: linear-gradient(45deg, $subscription-active, darken($subscription-active, 15%));
+          color: white;
+        }
+        &.inactive {
+          background: $light-color;
+          color: $dark-color;
+        }
+      }
+
+      .expiry-badge {
+        &.active {
+          background: linear-gradient(45deg, $success-color, darken($success-color, 15%));
+          color: white;
+        }
+        &.expired {
+          background: linear-gradient(45deg, $danger-color, darken($danger-color, 15%));
+          color: white;
+        }
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        button {
+          padding: 0.5rem 0.8rem;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 0.8rem;
+          font-weight: 500;
+          transition: all 0.2s ease;
+          min-width: 70px;
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          &.btn-role {
+            &.btn-promote {
+              background: linear-gradient(45deg, $success-color, darken($success-color, 15%));
+              color: white;
+
+              &:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba($success-color, 0.3);
+              }
+            }
+            &.btn-demote {
+              background: linear-gradient(45deg, $warning-color, darken($warning-color, 15%));
+              color: white;
+
+              &:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba($warning-color, 0.3);
+              }
+            }
+          }
+
+          &.btn-delete {
+            background: linear-gradient(45deg, $danger-color, darken($danger-color, 15%));
+            color: white;
+
+            &:hover:not(:disabled) {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 8px rgba($danger-color, 0.3);
+            }
+          }
+        }
+      }
+    }
+
+    .no-users {
+      padding: 3rem;
+      text-align: center;
+      color: lighten($dark-color, 40%);
+      font-style: italic;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .pagination-btn {
+      padding: 0.75rem 1.25rem;
+      border: 2px solid $border-color;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        border-color: $primary-color;
+        color: $primary-color;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &.active {
+        background: linear-gradient(45deg, $primary-color, $secondary-color);
+        color: white;
+        border-color: $primary-color;
+      }
+    }
+
+    .pagination-info {
+      color: lighten($dark-color, 30%);
+      font-size: 0.9rem;
+    }
+  }
+
+  .loading, .error {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.2rem;
+    @include flex-center;
+    flex-direction: column;
+    min-height: 300px;
+  }
+
+  .loading {
+    color: $primary-color;
+
+    &::after {
+      content: '';
+      width: 30px;
+      height: 30px;
+      border: 3px solid rgba($primary-color, 0.3);
+      border-top: 3px solid $primary-color;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-top: 1rem;
+    }
+  }
+
+  .error {
+    color: $danger-color;
+    font-weight: 500;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 1200px) {
+  .manage-users {
+    .users-table-container {
+      .users-table {
+        min-width: 1200px;
+        
+        th, td {
+          padding: 0.8rem;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .manage-users {
+    padding: 1.5rem;
+
+    .header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .filters-section {
+      .filters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .manage-users {
+    padding: 1rem;
+
+    .header {
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    .filters-section {
+      padding: 1rem;
+
+      .filters-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-actions {
+        flex-direction: column;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    .pagination {
+      gap: 0.5rem;
+
+      .pagination-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .manage-users {
+    .header {
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      .stats {
+        font-size: 0.9rem;
+      }
+    }
+
+    .pagination {
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .pagination-info {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}

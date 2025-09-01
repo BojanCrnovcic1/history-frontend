@@ -1,0 +1,15 @@
+:root {
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(135deg, #f8ead8, #e6caa7, #d4a373);
+
+  color: #3B2F2F;
+  overflow-x: hidden;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}

@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
+.map-container {
+    height: 100vh;
+    overflow: hidden;
+    .map-bg {
+        height: 100%;
+        width: 100%;
+        background: url('/public/assets/map-bg.png');
+        background-size: cover;
+      
+        font-family: "Cinzel", serif;
+      
+        h1, h2, h3 {
+          color: #5A3E2B;
+          margin-bottom: 0.8rem;
+        }
+      
+        p {
+          color: #3B2F2F;
+          line-height: 1.6;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+      
+        .map-page {
+          display: flex;
+          flex-direction: column; 
+          justify-content: flex-start;
+          align-items: center;
+          position: relative;
+      
+          .nav-button {
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 10;
+      
+            .nav-left button,
+            .nav-right button {
+              padding: 0.6rem 1.2rem;
+              border-radius: 8px;
+              font-weight: bold;
+              font-size: 0.95rem;
+              cursor: pointer;
+              transition: all 0.3s ease;    
+              background: linear-gradient(90deg, #8B5E3C, #A47148);
+              color: #fff;
+              border: none;
+            }
+      
+            .nav-left button:hover,
+            .nav-right button:hover {
+              background: linear-gradient(90deg, #A47148, #C68642);
+              transform: scale(1.05);
+            }
+    
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.4);
+                
+              }
+      
+            .nav-right {
+                display: flex;
+                gap: 1rem;
+    
+                .music-toggle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    background: linear-gradient(135deg, #d4a373, #b07b47);
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    
+                    &:hover {
+                      transform: translateY(-2px);
+                      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    }
+                }
+              
+                select {
+                  padding: 0.6rem 2.8rem 0.6rem 1.2rem;
+                  border-radius: 8px;
+                  font-weight: bold;
+                  font-size: 0.95rem;
+                  cursor: pointer;
+                  transition: all 0.3s ease;
+                  background: linear-gradient(90deg, #8B5E3C, #A47148);
+                  color: #fff;
+                  border: none;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;                          
+                  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12L8 12z'/%3E%3C/svg%3E");
+                  background-repeat: no-repeat;
+                  background-position: right 0.8rem center;
+                  background-size: 16px;
+                  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                  
+                  &:hover {
+                    background: linear-gradient(90deg, #A47148, #C68642);
+                    transform: scale(1.05);
+                  }
+                  
+                  &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.4);
+                  }
+                  
+                  option {
+                    background: #8B5E3C;
+                    color: #fff;
+                    padding: 0.5rem;
+                    font-family: "Cinzel", serif;
+              
+                    font-weight: 600;
+              
+                    &::after {
+                      content: attr(data-years);
+                      font-style: italic;
+                      color: #ddd;
+                      margin-left: 0.5rem;
+                      font-weight: normal;
+                    }
+              
+                    &:hover {
+                      background: #A47148 !important;
+                    }
+                    
+                    &:checked {
+                      background: #C68642;
+                    }
+                  }
+
+                  option:disabled {
+                    color: #999;
+                    background-color: #6d4c2f;
+                    cursor: not-allowed;
+                    
+                    &:hover {
+                      background-color: #6d4c2f !important;
+                    }
+                  }
+                }
+              }
+              
+          }
+      
+          .map {
+            position: relative;
+            width: auto;
+            height: 100vh;
+            max-height: 100vh;
+            overflow: hidden;
+      
+            .map-image {
+              display: block;
+              height: 100%;
+              width: auto;
+              object-fit: contain;
+            }
+      
+            .marker {
+                position: absolute;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+              
+                svg {
+                  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
+                  transition: transform 0.2s ease;
+                }
+              
+                &:hover svg {
+                  transform: scale(1.2);
+                }
+              
+                &::after {
+                  content: attr(data-label);
+                  position: absolute;
+                  top: -1.8rem;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  background: rgba(0, 0, 0, 0.75);
+                  color: white;
+                  padding: 4px 8px;
+                  border-radius: 6px;
+                  font-size: 0.75rem;
+                  white-space: nowrap;
+                  opacity: 0;
+                  pointer-events: none;
+                  transition: opacity 0.2s ease;
+                }
+              
+                &:hover::after,
+                &:focus::after {
+                  opacity: 1;
+                }
+            }        
+          }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .map-container {
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+  
+      .map-bg {
+        .map-page {
+          .nav-button {
+            top: 0.5rem;
+            padding: 0 1rem;
+  
+            .nav-left button,
+            .nav-right button {
+              padding: 0.4rem 0.8rem;
+              font-size: 0.8rem;
+              border-radius: 6px;
+            }
+  
+            .nav-right {
+              gap: 0.6rem;
+  
+              .music-toggle {
+                width: 32px;
+                height: 32px;
+              }
+  
+              select {
+                font-size: 0.8rem;
+                padding: 0.4rem 2rem 0.4rem 0.8rem;
+                border-radius: 6px;
+                background-position: right 0.5rem center;
+                background-size: 14px;
+              }
+            }
+          }
+  
+          .map {
+            height: 100%;
+            width: 100%;
+            -moz-overflow-scrolling: touch;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+  
+            .map-image {
+              display: block;
+              width: 1500px; 
+              height: auto;
+              max-width: none;
+              max-height: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .map-container .map-bg .map-page {
+      .nav-button {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+  
+        .nav-left,
+        .nav-right {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+  
+        .nav-left button,
+        .nav-right button {
+          font-size: 0.75rem;
+          padding: 0.3rem 0.6rem;
+        }
+  
+        .nav-right {
+          flex-wrap: wrap;
+          justify-content: center;
+  
+          .music-toggle {
+            width: 28px;
+            height: 28px;
+          }
+  
+          select {
+            width: 100%;
+            max-width: 200px;
+            font-size: 0.75rem;
+            padding: 0.3rem 1.8rem 0.3rem 0.6rem;
+          }
+        }
+      }
+    }
+  }
+  
+  

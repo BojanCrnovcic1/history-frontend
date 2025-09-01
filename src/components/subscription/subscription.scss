@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+
+.subscription {
+  font-family: 'Cinzel', serif;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: fadeIn 1s ease-out;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  &-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 2rem;
+    background: rgba(248, 240, 227, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(90, 62, 43, 0.2);
+    border: 1px solid rgba(139, 94, 60, 0.3);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(90, 62, 43, 0.3);
+    }
+
+    h2 {
+      color: #5A3E2B;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+      font-weight: 600;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, #8B5E3C, #A47148);
+        border-radius: 3px;
+      }
+    }
+
+    p {
+      color: #3B2F2F;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+
+      .plan-card {
+        flex: 1;
+        min-width: 280px;
+        max-width: 350px;
+        padding: 2rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(139, 94, 60, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(139, 94, 60, 0.2);
+
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(139, 94, 60, 0.2);
+        }
+
+        &.popular {
+          border: 2px solid #A47148;
+          
+          &::before {
+            content: 'Popularno';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #A47148;
+            color: white;
+            padding: 0.3rem 2rem;
+            font-size: 0.9rem;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          }
+        }
+
+        h3 {
+          color: #5A3E2B;
+          font-size: 1.8rem;
+          margin-bottom: 1rem;
+          text-align: center;
+          font-weight: 500;
+        }
+
+        .price {
+          color: #3B2F2F;
+          font-size: 1.5rem;
+          font-weight: 500;
+          text-align: center;
+          margin-bottom: 2rem;
+          padding-bottom: 1.5rem;
+          border-bottom: 1px dashed #A47148;
+        }
+
+        .btn {
+          display: block;
+          width: 100%;
+          padding: 1rem;
+          background: linear-gradient(90deg, #8B5E3C, #A47148);
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          font-family: 'Cinzel', serif;
+          font-size: 1.1rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          z-index: 1;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #A47148, #C68642);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          &:hover::before {
+            opacity: 1;
+          }
+
+          &:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+
+            &::before {
+              display: none;
+            }
+          }
+
+          &:active {
+            transform: scale(0.98);
+          }
+        }
+      }
+    }
+
+    .message {
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 6px;
+      background: rgba(164, 113, 72, 0.1);
+      color: #5A3E2B;
+      border: 1px solid rgba(164, 113, 72, 0.3);
+      animation: fadeInUp 0.5s ease-out;
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+/* Tablet stilovi */
+@media (max-width: 992px) {
+  .subscription {
+    padding: 1.5rem;
+
+    &-container {
+      padding: 1.5rem;
+
+      h2 {
+        font-size: 2.2rem;
+      }
+
+      .plans {
+        gap: 1.5rem;
+
+        .plan-card {
+          min-width: 240px;
+          padding: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+/* Mobilni stilovi */
+@media (max-width: 768px) {
+  .subscription {
+    padding: 1rem;
+
+    &-container {
+      padding: 1.5rem 1rem;
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .plans {
+        flex-direction: column;
+        align-items: center;
+
+        .plan-card {
+          width: 100%;
+          max-width: 100%;
+          margin-bottom: 1.5rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Animacija za kartice prilikom učitavanja */
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.plans .plan-card {
+  animation: cardEntrance 0.6s ease-out;
+  animation-fill-mode: backwards;
+
+  &:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+}
