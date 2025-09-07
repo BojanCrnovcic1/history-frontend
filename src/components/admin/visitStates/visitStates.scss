@@ -1,0 +1,72 @@
+.visit-states {
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+  
+    .granularity-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+  
+      button {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        border: none;
+        background: #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &.active {
+          background: #4caf50;
+          color: white;
+        }
+  
+        &:hover {
+          background: #94a3b8;
+          color: white;
+        }
+      }
+    }
+  
+    .numbers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+  
+      .card {
+        flex: 1 1 200px;
+        padding: 1rem;
+        background: white;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+  
+        &:hover {
+          transform: translateY(-4px);
+        }
+  
+        h3 {
+          margin-bottom: 0.5rem;
+          color: #475569;
+        }
+  
+        p {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #111827;
+        }
+      }
+    }
+  }
+  

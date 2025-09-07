@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, Menu, NavigationIcon, Navigation2Off, HourglassIcon, Timer, Pen,  Edit, Users2Icon } from 'lucide-react';
+import { ChevronDown, ChevronUp, Menu, NavigationIcon, Navigation2Off, HourglassIcon, Timer, Pen,  Edit, Users2Icon, Eye } from 'lucide-react';
 import React, { useState } from 'react';
 import './sideBar.scss';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,7 @@ const SideBar: React.FC<AdminSideBarProps> = ({ collapsed, setCollapsed }) => {
   const [showPeriods, setShowPeriods] = useState<boolean>(false);
   const [showEvents, setShowEvents] = useState<boolean>(false);
   const [showUsers, setShowUsers] = useState<boolean>(false);
+  const [showVisits, setShowVisits] = useState<boolean>(false);
   const { logout } = useAuth();
 
   const handleLogout = () => {
@@ -99,6 +100,19 @@ const SideBar: React.FC<AdminSideBarProps> = ({ collapsed, setCollapsed }) => {
             <div className="submenu">
               <Link to="manageUsers" onClick={handleSelect}>
                 <Users2Icon size={18} /> Manage Users
+              </Link>
+            </div>
+          )}
+          <div
+            className="nav-item"
+            onClick={() => setShowVisits(!showVisits)}
+          >
+            <span>Visits</span>
+          </div>
+          {showVisits && (
+            <div className="submenu">
+              <Link to="showVisits" onClick={handleSelect}>
+                <Eye size={18} /> Show visits
               </Link>
             </div>
           )}

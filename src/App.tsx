@@ -16,19 +16,29 @@ import ManageTimePeriod from './components/admin/manageTimePeriod/ManageTimePero
 import CreateEvent from './components/admin/createEvent/CreateEvent'
 import ManageEvents from './components/admin/manageEvents/ManageEvents'
 import ManageUsers from './components/admin/manageUsers/ManageUsers'
+import VisitTrucker from './misc/VisitTrucker'
+import VisitStates from './components/admin/visitStates/VisitStates'
+
 
 const App = () => {
-  const {accessToken, user} = useAuth();
-
+  const { accessToken, user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
+ 
+    VisitTrucker();
+
     if (user?.role) {
-    if (accessToken && user.role === 'ADMIN' && !window.location.pathname.startsWith('/adminPanel')) {
-      navigate('/adminPanel');
+      if (
+        accessToken &&
+        user.role === 'ADMIN' &&
+        !window.location.pathname.startsWith('/adminPanel')
+      ) {
+        navigate('/adminPanel');
+      }
     }
-  }
   }, [accessToken, user?.role, navigate]);
+
   return (
     <Routes>
       <Route path='/' element={<LandingPage />} />
@@ -36,23 +46,29 @@ const App = () => {
 
       <Route path='/subscription' element={<Subscription />} />
 
-      <Route path='/adminPanel/'
-             element={<ProtectedRoute allowedRoles={['ADMIN']}><AdminDashbourd /></ProtectedRoute>
-      }>
+      <Route
+        path='/adminPanel/'
+        element={
+          <ProtectedRoute allowedRoles={['ADMIN']}>
+            <AdminDashbourd />
+          </ProtectedRoute>
+        }
+      >
         <Route path='createEvents' element={<CreateEvent />} />
         <Route path='manageEvents' element={<ManageEvents />} />
         <Route path='createTimePeriod' element={<CreateTimePeriod />} />
         <Route path='manageTimePeriod' element={<ManageTimePeriod />} />
         <Route path='createLocation' element={<CreateLocation />} />
         <Route path='manageLocations' element={<ManageLocations />} />
-        <Route path='manageUsers' element={<ManageUsers/>} />
+        <Route path='manageUsers' element={<ManageUsers />} />
+        <Route path='showVisits' element={<VisitStates />} />
       </Route>
 
       <Route path='/login' element={<Login />} />
       <Route path='/reset-password' element={<ResetPassword />} />
       <Route path='/register' element={<Register />} />
     </Routes>
-  )
-}
+  );
+};
 
-export default App
+export default App;
