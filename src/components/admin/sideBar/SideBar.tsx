@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, Menu, NavigationIcon, Navigation2Off, HourglassIcon, Timer, Pen,  Edit, Users2Icon, Eye } from 'lucide-react';
+import { ChevronDown, ChevronUp, Menu, NavigationIcon, Navigation2Off, HourglassIcon, Timer, Pen,  Edit, Users2Icon, Eye, LucideLanguages } from 'lucide-react';
 import React, { useState } from 'react';
 import './sideBar.scss';
 import { Link } from 'react-router-dom';
@@ -55,6 +55,9 @@ const SideBar: React.FC<AdminSideBarProps> = ({ collapsed, setCollapsed }) => {
               <Link to="manageTimePeriod" onClick={handleSelect}>
                 <Timer size={18} /> Manage Time Period
               </Link>
+              <Link to="translateTimePeriod" onClick={handleSelect}>
+                <LucideLanguages size={18} /> Translate Time Period
+              </Link>
             </div>
           )}
 
@@ -87,6 +90,9 @@ const SideBar: React.FC<AdminSideBarProps> = ({ collapsed, setCollapsed }) => {
               </Link>
               <Link to="manageEvents" onClick={handleSelect}>
                 <Edit size={18} /> Manage Events
+              </Link>
+              <Link to="translateEvents" onClick={handleSelect}>
+                <LucideLanguages size={18} /> Translate Events
               </Link>
             </div>
           )}

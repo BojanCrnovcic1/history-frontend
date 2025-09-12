@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./resetPassword.scss";
 import { ApiConfig } from "../../config/ApiConfig";
+import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
   const [step, setStep] = useState(1);
@@ -10,15 +11,16 @@ const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const { t } = useTranslation();
 
   const requestReset = async () => {
     try {
       setError("");
-      const res = await axios.post(ApiConfig.API_URL +"api/users/password-reset", { email });
+      const res = await axios.post(ApiConfig.API_URL + "api/users/password-reset", { email });
       setMessage(res.data.message);
       setStep(2);
     } catch (err: any) {
-      setError(err.response?.data?.message || "Greška pri slanju zahteva");
+      setError(err.response?.data?.message || t("resetPassword.errorRequest"));
     }
   };
 
@@ -33,7 +35,7 @@ const ResetPassword = () => {
       setMessage(res.data.message);
       setStep(3);
     } catch (err: any) {
-      setError(err.response?.data?.message || "Greška pri resetovanju lozinke");
+      setError(err.response?.data?.message || t("resetPassword.errorReset"));
     }
   };
 
@@ -42,40 +44,40 @@ const ResetPassword = () => {
       <div className="reset-form">
         {step === 1 && (
           <>
-            <h2>Zaboravljena lozinka</h2>
+            <h2>{t("resetPassword.titleStep1")}</h2>
             <input
               type="email"
-              placeholder="Unesite svoj email"
+              placeholder={t("resetPassword.placeholderEmail")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button onClick={requestReset}>Pošalji kod</button>
+            <button onClick={requestReset}>{t("resetPassword.sendCode")}</button>
           </>
         )}
 
         {step === 2 && (
           <>
-            <h2>Unesite kod i novu lozinku</h2>
+            <h2>{t("resetPassword.titleStep2")}</h2>
             <input
               type="text"
-              placeholder="Kod iz emaila"
+              placeholder={t("resetPassword.placeholderCode")}
               value={code}
               onChange={(e) => setCode(e.target.value)}
             />
             <input
               type="password"
-              placeholder="Nova lozinka"
+              placeholder={t("resetPassword.placeholderNewPassword")}
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
-            <button onClick={confirmReset}>Potvrdi</button>
+            <button onClick={confirmReset}>{t("resetPassword.confirm")}</button>
           </>
         )}
 
         {step === 3 && (
           <>
-            <h2>{message}</h2>
-            <a href="/login">Vrati se na prijavu</a>
+            <h2>{t("resetPassword.titleStep3")}</h2>
+            <a href="/login">{t("resetPassword.backToLogin")}</a>
           </>
         )}
 

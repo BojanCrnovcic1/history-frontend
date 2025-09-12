@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ApiConfig } from '../../config/ApiConfig';
 import { Link, useNavigate } from 'react-router-dom';
 import './register.scss';
+import { useTranslation } from 'react-i18next';
 
 interface RegisterProps {
   username: string;
@@ -17,10 +18,11 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const doRegister = async () => {
     if (!email || !password || !username) {
-      return setErrorMessage('Molimo vas da popunite obavezna polja.');
+      return setErrorMessage(t('register.fillFields'));
     }
 
     const payload: any = { username, email, password };
@@ -34,15 +36,13 @@ const Register = () => {
       if (response.status !== 201) {
         return response.statusText;
       } else {
-        setSuccessMessage(
-          "Registracija je uspešno obavljena! Potvrdite svoj nalog putem mejla kako biste mogli da se prijavite i rezervišete svoje slavlje iz snova."
-        );
+        setSuccessMessage(t('register.success'));
         setTimeout(() => {
           navigate('/login');
         }, 5000);
       }
     } catch (error) {
-      setErrorMessage('Greška prilikom registracije. Molimo Vas pokušajte ponovo.');
+      setErrorMessage(t('register.error'));
     }
   };
 
@@ -53,18 +53,15 @@ const Register = () => {
   return (
     <div className="register">
       <button className="archive-back-button" onClick={handleBackClick}>
-        &larr; Nazad
+        &larr; {t('registerPage.back')}
       </button>
 
       <div className="register-card">
-        <h1>Registracija</h1>
-        <p className="info-text">
-          Registracija je <strong>potpuno besplatna</strong>.  
-          Kada budete želeli, uvek možete kupiti <strong>premium sadržaj</strong> i otključati dodatne funkcionalnosti.
-        </p>
+        <h1>{t('registerPage.title')}</h1>
+        <p className="info-text">{t('registerPage.info')}</p>
 
         <form>
-          <label htmlFor="username">Korisničko ime:</label>
+          <label htmlFor="username">{t('registerPage.username')}:</label>
           <input
             type="text"
             id="username"
@@ -73,7 +70,7 @@ const Register = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
 
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">{t('registerPage.email')}:</label>
           <input
             type="email"
             id="email"
@@ -82,7 +79,7 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <label htmlFor="password">Lozinka:</label>
+          <label htmlFor="password">{t('registerPage.password')}:</label>
           <input
             type="password"
             id="password"
@@ -92,16 +89,16 @@ const Register = () => {
           />
 
           <button type="button" onClick={doRegister}>
-            Registruj se
+            {t('registerPage.button')}
           </button>
         </form>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <div className="register-back">
-          <span>Već imate nalog?</span>
+          <span>{t('registerPage.alreadyAccount')}</span>
           <Link to={'/login'}>
-            <p>Prijavite se ovde...</p>
+            <p>{t('registerPage.loginHere')}</p>
           </Link>
         </div>
       </div>
@@ -118,4 +115,5 @@ const Register = () => {
 };
 
 export default Register;
+
 

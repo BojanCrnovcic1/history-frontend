@@ -11,6 +11,7 @@ import EventModal from "../../modals/events/EventModal";
 import { LocateFixed, Music, Scroll, Swords, VolumeX } from "lucide-react";
 import PremiumMapModal from "../../modals/events/PremiumMapModal";
 import { useMusic } from "../../context/MusicContext";
+import { useTranslation } from "react-i18next";
 
 const MAP_BOUNDS = {
   north: 60,
@@ -25,6 +26,8 @@ const Map: React.FC = () => {
   const navigate = useNavigate();
   const mapRef = useRef<HTMLDivElement>(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const { i18n, t } = useTranslation();
+
 
   const [mapSize, setMapSize] = useState<{ width: number; height: number }>({
     width: 0,
@@ -38,6 +41,7 @@ const Map: React.FC = () => {
   const [openEvent, setOpenEvent] = useState<Events | null>(null); 
   const [openPremium, setOpenPremium] = useState<boolean>(false);
   const [availableEventTypes, setAvailableEventTypes] = useState<string[]>([]);
+  
 
   const coordsToPixel = (
     lat: number,
@@ -122,20 +126,44 @@ const Map: React.FC = () => {
       try {
         const response = await axios.get(
           `${ApiConfig.API_URL}api/time-periods/roots`,
-          {
-            headers: { Authorization: `Bearer ${accessToken}` },
-          }
+          { headers: { Authorization: `Bearer ${accessToken}` } }
         );
-        setTimePeriods(response.data);
-        if (response.data.length > 0) {
-          setSelectedPeriod(response.data[0]); 
-        }
+  
+        const roots: TimePeriods[] = response.data;
+  
+        const addTranslation = (period: TimePeriods): TimePeriods => {
+          const translation = period.translations?.find(t => t.language === i18n.language);
+          const newPeriod: TimePeriods = {
+            ...period,
+            name: translation?.name || period.name,
+            startYear: translation?.startYear || period.startYear,
+            endYear: translation?.endYear || period.endYear,
+            description: translation?.description || period.description,
+            children: period.children?.map(addTranslation) || [],
+            events: period.events?.map(ev => {
+              const evTranslation = ev.translates?.find(t => t.language === i18n.language);
+              return {
+                ...ev,
+                title: evTranslation?.title || ev.title,
+                description: evTranslation?.description || ev.description,
+              }
+            }) || [],
+          };
+          return newPeriod;
+        };
+  
+        const translatedRoots = roots.map(addTranslation);
+  
+        setTimePeriods(translatedRoots);
+        if (translatedRoots.length > 0) setSelectedPeriod(translatedRoots[0]);
+  
       } catch (error) {
         console.error("Greška pri dohvaćanju perioda:", error);
       }
     };
     fetchPeriods();
-  }, [accessToken]);
+  }, [accessToken, i18n.language]);
+  
 
   useEffect(() => {
     const updateSize = () => {
@@ -240,11 +268,11 @@ const Map: React.FC = () => {
         <div className="map-page">
           <div className="nav-button">
             <div className="nav-left">
-              <button className="close-btn" onClick={() => navigate('/')}>Nazad</button>
+              <button className="close-btn" onClick={() => navigate('/')}>{t("map.back")}</button>
             </div>
             <div className="nav-right">
               <select 
-                title="Događaji"
+                title={t("map.events")}
                 value={selectedEventType}
                 onChange={(e) => setSelectedEventType(e.target.value)}
               >
@@ -252,23 +280,23 @@ const Map: React.FC = () => {
                   value="event"
                   disabled={!availableEventTypes.includes("event")}
                 >
-                  Događaji
+                  {t("map.events")}
                 </option>
                 <option 
                   value="battle"
                   disabled={!availableEventTypes.includes("battle")}
                 >
-                  Bitke
+                  {t("map.battles")}
                 </option>
                 <option 
                   value="biography"
                   disabled={!availableEventTypes.includes("biography")}
                 >
-                  Biografije
+                  {t("map.biographies")}
                 </option>
               </select>
               <select 
-                title="Vremenski Period"
+                title={t("map.timePeriods")}
                 value={selectedPeriod?.timePeriodId || ""}
                 onChange={(e) => {
                   const findPeriodById = (periods: TimePeriods[], id: number): TimePeriods | null => {
@@ -298,7 +326,7 @@ const Map: React.FC = () => {
           <div className="map" ref={mapRef}>
             <img 
               src="/assets/map.png" 
-              alt="Mapa" 
+              alt={t("map.mapAlt")} 
               className="map-image" 
               onLoad={handleImageLoad} 
             />
@@ -312,8 +340,9 @@ const Map: React.FC = () => {
         <TimePeriodDescriptionModal
           isOpen={!!openPeriod}
           onClose={() => setOpenPeriod(null)}
-          title={openPeriod?.name}
-          description={openPeriod?.description || ""}
+          timePeriodId={openPeriod?.timePeriodId ?? null}
+          defaultTitle={openPeriod?.name}
+          defaultDescription={openPeriod?.description || ""}
         />
         <EventModal
           isOpen={!!openEvent}

@@ -1,40 +1,41 @@
+import { useNavigate } from 'react-router-dom';
 import './footer.scss';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-overlay">
         
         {/* O aplikaciji */}
         <div className="footer-section about">
-          <h2>HistoTrails</h2>
-          <p>
-            HistoTrails je interaktivna mapa i vodič kroz najvažnije događaje iz
-            istorije. Povezujemo prošlost i sadašnjost kroz edukativne sadržaje,
-            multimediju i zanimljive priče iz svih krajeva sveta.
-          </p>
+          <h2>{t("footerAboutTitle")}</h2>
+          <p>{t("footerAboutText")}</p>
         </div>
 
         {/* Informacije */}
         <div className="footer-section info">
-          <h3>Informacije</h3>
+          <h3>{t("footerInfoTitle")}</h3>
           <ul>
-            <li><a href="/terms">Uslovi korišćenja</a></li>
-            <li><a href="/privacy">Politika privatnosti</a></li>
-            <li><a href="/sources">Izvori informacija</a></li>
+            <li onClick={() => navigate('/terms')}>{t("footerInfoTerms")}</li>
+            <li onClick={() => navigate('/privacy')}>{t("footerInfoPrivacy")}</li>
+            <li onClick={() => navigate('/sources')}>{t("footerInfoSources")}</li>
           </ul>
         </div>
 
         {/* Kontakt */}
         <div className="footer-section contact">
-          <h3>Kontakt</h3>
-          <p>Email: <a href="mailto:info@histotrails.com">info@histotrails.com</a></p>
+          <h3>{t("footerContactTitle")}</h3>
+          <p>{t("footerContactEmail")}: <a href="mailto:info@histotrails.com">info@histotrails.com</a></p>
         </div>
 
         {/* Društvene mreže */}
         <div className="footer-section social">
-          <h3>Pratite nas</h3>
+          <h3>{t("footerSocialTitle")}</h3>
           <div className="social-icons">
             <a href="#"><Facebook size={28} /></a>
             <a href="#"><Instagram size={28} /></a>
@@ -45,7 +46,7 @@ const Footer = () => {
 
       {/* Donji deo footera */}
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} HistoTrails. Sva prava zadržana.</p>
+        <p>© {new Date().getFullYear()} HistoTrails. {t("footerBottom")}</p>
       </div>
     </footer>
   );

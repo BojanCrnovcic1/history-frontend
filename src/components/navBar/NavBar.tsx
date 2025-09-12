@@ -4,23 +4,37 @@ import { useAuth } from '../../context/AuthContext';
 import { useEffect, useRef, useState } from 'react';
 import { Globe, Music, VolumeX } from 'lucide-react';
 import { useMusic } from '../../context/MusicContext';
+import { useTranslation } from 'react-i18next';
 
 const NavBar = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const role = user?.role;
 
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const [hideNav, setHideNav] = useState<boolean>(false);
-  const [lastScrollY, setLastScrollY] = useState<number>(0);
-  const [language, setLanguage] = useState<string>('sr');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hideNav, setHideNav] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const { isPlaying, toggleMusic } = useMusic();
+  const { t, i18n } = useTranslation();
+
+  const savedLang = localStorage.getItem("lang");
+  const initialLang = savedLang || i18n.language || "sr";
+  const [language, setLanguage] = useState(initialLang);
 
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const { isPlaying, toggleMusic } = useMusic();
-
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+    localStorage.setItem("lang", language);
+  }, [language, i18n]);
+
+  useEffect(() => {
+    setLanguage(i18n.language);
+  }, [i18n.language]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -28,7 +42,6 @@ const NavBar = () => {
         closeMenu();
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -43,7 +56,6 @@ const NavBar = () => {
       }
       setLastScrollY(currentScrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
@@ -61,17 +73,16 @@ const NavBar = () => {
         </div>
         
         <div className='rightBar'>
-          {/* Desktop controls */}
           <div className="desktop-controls">
             {role === 'USER' ? (
               <>
-                <button onClick={() => navigate('/subscription')}>Pretplata</button>
-                <button onClick={() => { closeMenu(); logout(); }}>Odjavi se</button>
+                <button onClick={() => navigate('/subscription')}>{t("subscription")}</button>
+                <button onClick={() => { logout(); }}>{t("logout")}</button>
               </>
             ) : (
               <>
-                <button onClick={() => navigate('/login')}>Prijava</button>
-                <button onClick={() => navigate('/register')}>Registracija</button>
+                <button onClick={() => navigate('/login')}>{t("login")}</button>
+                <button onClick={() => navigate('/register')}>{t("register")}</button>
               </>
             )}
             
@@ -103,33 +114,26 @@ const NavBar = () => {
         <div className="mobile-dropdown-content">
           {role === 'USER' ? (
             <>
-              <button onClick={() => { navigate('/subscription'); closeMenu(); }}>
-                Pretplata
-              </button>
-              <button onClick={() => { logout(); closeMenu(); }}>
-                Odjavi se
-              </button>
+              <button onClick={() => { navigate('/subscription'); closeMenu(); }}>{t("subscription")}</button>
+              <button onClick={() => { logout(); closeMenu(); }}>{t("logout")}</button>
             </>
           ) : (
             <>
-              <button onClick={() => { navigate('/login'); closeMenu(); }}>
-                Prijava
-              </button>
-              <button onClick={() => { navigate('/register'); closeMenu(); }}>
-                Registracija
-              </button>
+              <button onClick={() => { navigate('/login'); closeMenu(); }}>{t("login")}</button>
+              <button onClick={() => { navigate('/register'); closeMenu(); }}>{t("register")}</button>
             </>
           )}
           
           <div className="mobile-controls">
             <div className="control-item" onClick={toggleMusic}>
               {isPlaying ? <Music size={20} /> : <VolumeX size={20} />}
-              <span>{isPlaying ? 'Muzika: Uključeno' : 'Muzika: Isključeno'}</span>
+              <span>{isPlaying ? t("musicOn") : t("musicOff")}</span>
             </div>
             
             <div className="control-item language-item">
               <Globe size={20} />
-              <select title='jezik'
+              <select 
+                title='jezik'
                 value={language} 
                 onChange={handleLanguageChange}
                 onClick={(e) => e.stopPropagation()}
@@ -146,3 +150,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+

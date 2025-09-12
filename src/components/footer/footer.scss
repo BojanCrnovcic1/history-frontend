@@ -33,15 +33,13 @@
   
       li {
         margin-bottom: 0.5rem;
+        color: #ddd;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        cursor: pointer;
   
-        a {
-          color: #ddd;
-          text-decoration: none;
-          transition: color 0.3s ease;
-  
-          &:hover {
-            color: #d4a373;
-          }
+        &:hover {
+          color: #d4a373;
         }
       }
     }

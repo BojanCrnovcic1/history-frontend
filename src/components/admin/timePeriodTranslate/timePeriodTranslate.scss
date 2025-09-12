@@ -1,0 +1,146 @@
+/* timePeriodTranslate.scss */
+
+.timeperiod-translate {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.6s ease-in-out;
+  
+    h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #2d3748;
+    }
+  
+    h3 {
+      margin: 1.2rem 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #4a5568;
+      border-left: 4px solid #4caf50;
+      padding-left: 0.5rem;
+    }
+  
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.2rem;
+  
+      label {
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #4a5568;
+      }
+  
+      input,
+      select,
+      textarea {
+        padding: 0.75rem 1rem;
+        border: 1px solid #cbd5e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+  
+        &:focus {
+          border-color: #4caf50;
+          outline: none;
+          box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+        }
+      }
+  
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+    }
+  
+    .form-row {
+      display: flex;
+      gap: 1rem;
+  
+      .form-group {
+        flex: 1;
+      }
+  
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  
+    .save-btn {
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4caf50, #2f855a);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+  
+      &:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #45a049, #276749);
+      }
+  
+      &:disabled {
+        background: #a0aec0;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+  
+  /* Animacije */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .timeperiod-translate {
+      padding: 1.5rem;
+  
+      h2 {
+        font-size: 1.5rem;
+      }
+  
+      .save-btn {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .timeperiod-translate {
+      padding: 1rem;
+      border-radius: 12px;
+  
+      h2 {
+        font-size: 1.3rem;
+      }
+  
+      .save-btn {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+      }
+    }
+  }
+  

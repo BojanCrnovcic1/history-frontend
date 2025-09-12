@@ -1,0 +1,153 @@
+{
+    "subscription": "Pretplata",
+    "logout": "Odjavi se",
+    "login": "Prijava",
+    "register": "Registracija",
+    "musicOn": "Muzika: Uključeno",
+    "musicOff": "Muzika: Isključeno",
+    "heroText": "Vaša interaktivna mapa i vodič kroz najvažnije događaje iz istorije. Krećite se kroz vreme, otkrivajte fascinantne priče i učite na potpuno nov način.",
+    "heroButton": "Započni putovanje",
+
+    "footerAboutTitle": "HistoTrails",
+    "footerAboutText": "HistoTrails je interaktivna mapa i vodič kroz najvažnije događaje iz istorije. Povezujemo prošlost i sadašnjost kroz edukativne sadržaje, multimediju i zanimljive priče.", 
+    "footerInfoTitle": "Informacije",
+    "footerInfoTerms": "Uslovi korišćenja",
+    "footerInfoPrivacy": "Politika privatnosti",
+    "footerInfoSources": "Izvori informacija",
+    "footerContactTitle": "Kontakt",
+    "footerContactEmail": "Email",
+    "footerSocialTitle": "Pratite nas",
+    "footerBottom": "Sva prava zadržana.",
+    "terms": {
+    "back": "← Nazad",
+    "title": "Uslovi korišćenja",
+    "welcome": "Dobrodošli u aplikaciju za čitanje istorije. Korištenjem naše aplikacije prihvatate uslove korištenja navedene u ovom dokumentu. Molimo vas da pažljivo pročitate sve stavke prije korištenja aplikacije.",
+    "section1Title": "1. Opis aplikacije",
+    "section1Text": "Naša aplikacija pruža interaktivnu kartu starog svijeta oko Mediterana – Evropa, Sjeverna Afrika i Bliski istok sa Mesopotamijom. Na karti su označene ključne lokacije sa događajima i bitkama koje korisnik može istraživati. Klikom na lokaciju otvara se modal sa detaljnim informacijama o događaju.",
+    "section2Title": "2. Vremenski ciklusi",
+    "section2Text": "Korisnici imaju mogućnost odabira vremenskog ciklusa (kameno doba, bronzano doba, rana antika itd.). Time se filtriraju događaji i lokacije prikazane na mapi.",
+    "section3Title": "3. Pravila korištenja",
+    "rule1": "Aplikaciju možete koristiti isključivo u edukativne svrhe.",
+    "rule2": "Zabranjeno je kopiranje i distribucija sadržaja bez dozvole autora.",
+    "rule3": "Korisnici se obavezuju da neće zloupotrebljavati aplikaciju.",
+    "section4Title": "4. Izmjene",
+    "section4Text": "Ovi uslovi korištenja mogu se povremeno mijenjati. O svim značajnim promjenama bićete obaviješteni unutar aplikacije.",
+    "section5Title": "5. Kontakt",
+    "section5Text": "Za sva pitanja u vezi sa ovim uslovima, molimo vas da nas kontaktirate putem e-mail adrese:"
+  },
+    "privacy": {
+      "back": "← Nazad",
+      "title": "Politika privatnosti",
+      "section1Title": "1. Uvod",
+      "section1Text": "Ova aplikacija za čitanje istorije poštuje vašu privatnost i obavezuje se da vaše podatke koristi isključivo u svrhu pružanja usluga aplikacije. Korištenjem aplikacije prihvatate pravila navedena u ovoj Politici privatnosti.",
+      "section2Title": "2. Podaci koje prikupljamo",
+      "section2Text": "Da biste koristili premium sadržaj, potrebno je da kreirate korisnički nalog. Prilikom registracije prikupljamo:",
+      "email": "E-mail adresu",
+      "password": "Lozinku",
+      "fullname": "Ime i prezime (opcionalno)",
+      "section2Note": "Ovi podaci se koriste samo za autentikaciju i pristup aplikaciji.",
+      "section3Title": "3. Plaćanja",
+      "section3Text1": "Plaćanja se obavljaju putem sigurnih servisa trećih strana (npr. Google Play, App Store ili drugih ovlaštenih pružalaca usluga plaćanja).",
+      "section3Text2": "➡️ Aplikacija **ne prikuplja niti čuva podatke o vašoj kartici**.",
+      "section4Title": "4. Politika otkazivanja i povrata novca",
+      "rule1": "Korisnik može otkazati pretplatu u bilo kojem trenutku putem platforme na kojoj je kupovina izvršena.",
+      "rule2": "Plaćanja su **nepovratna** – povrat novca nije moguć za već plaćene periode.",
+      "rule3": "Nakon otkazivanja, korisnik zadržava pristup premium sadržaju do isteka već plaćenog perioda.",
+      "section5Title": "5. Kolačići (Cookies)",
+      "section5Text": "Aplikacija trenutno ne koristi kolačiće. Ako u budućnosti uvedemo kolačiće radi poboljšanja usluge, korisnici će biti obaviješteni i moći će dati ili uskratiti saglasnost.",
+      "section6Title": "6. Dijeljenje podataka",
+      "section6Text": "Vaši lični podaci se ne dijele sa trećim stranama, osim kada je to zakonski obavezno.",
+      "section7Title": "7. Sigurnost",
+      "section7Text": "Preduzimamo odgovarajuće tehničke i organizacione mjere kako bismo zaštitili vaše podatke od neovlaštenog pristupa, gubitka ili zloupotrebe.",
+      "section8Title": "8. Kontakt",
+      "section8Text": "Za sva pitanja u vezi sa privatnošću i vašim podacima, možete nas kontaktirati putem e-mail adrese:",
+      "contact": "📧 support@istorija-app.com"
+    },
+
+    "sources": {
+      "back": "Nazad",
+      "title": "Izvori",
+      "intro": "Ovdje navodimo izvore muzike i istorijskih podataka korištenih u aplikaciji.",
+      "musicTitle": "Muzika",
+      "musicText1": "Muzika korištena u aplikaciji služi kao ambijentalna pratnja i nema komercijalnu upotrebu. Sve kompozicije su royalty-free ili korištene sa dozvolom autora.",
+      "musicExample": "Primjer: \"Ancient Echoes\" – John Doe (royalty free music).",
+      "historyTitle": "Izvori istorijskih podataka",
+      "history1": "Herodot – Istorije",
+      "history2": "Tucidid – Istorija Peloponeskog rata",
+      "history3": "Arheološki nalazi – British Museum",
+      "history4": "Literatura o Starom Egiptu i Mesopotamiji",
+      "history5": "Razni istorijski atlas i enciklopedije"
+    },
+    
+    "loginPage": {
+        "back": "← Nazad",
+        "title": "Prijava",
+        "emailPlaceholder": "Email adresa",
+        "passwordPlaceholder": "Lozinka",
+        "buttonLoading": "Prijava...",
+        "buttonSubmit": "Prijavi se",
+        "error": "Greška pri prijavi",
+        "noAccount": "Nemate nalog? Registrujte se",
+        "forgotPassword": "Zaboravljena lozinka?"
+      },
+      
+      "registerPage": {
+        "title": "Registracija",
+        "info": "Registracija je potpuno besplatna. Kada budete želeli, uvek možete kupiti premium sadržaj i otključati dodatne funkcionalnosti.",
+        "username": "Korisničko ime",
+        "email": "Email",
+        "password": "Lozinka",
+        "button": "Registruj se",
+        "alreadyAccount": "Već imate nalog?",
+        "loginHere": "Prijavite se ovde...",
+        "success": "Registracija je uspešno obavljena! Potvrdite svoj nalog putem mejla kako biste mogli da se prijavite i rezervišete svoje slavlje iz snova.",
+        "error": "Greška prilikom registracije. Molimo Vas pokušajte ponovo.",
+        "fillFields": "Molimo vas da popunite obavezna polja.",
+        "back": "Nazad"
+      },
+
+      "resetPassword": {
+        "titleStep1": "Zaboravljena lozinka",
+        "placeholderEmail": "Unesite svoj email",
+        "sendCode": "Pošalji kod",
+        "titleStep2": "Unesite kod i novu lozinku",
+        "placeholderCode": "Kod iz emaila",
+        "placeholderNewPassword": "Nova lozinka",
+        "confirm": "Potvrdi",
+        "titleStep3": "Lozinka je uspešno resetovana.",
+        "backToLogin": "Vrati se na prijavu",       
+        "errorRequest": "Greška pri slanju zahteva",
+        "errorReset": "Greška pri resetovanju lozinke"
+      },
+     
+      "subscriptionPage": {
+        "title": "Izaberi plan pretplate",
+        "description": "Uživaj u svim premium sadržajima i otključaj ceo istorijski vodič. Možeš otkazati pretplatu bilo kada.",
+        "monthly": "Mjesečna",
+        "monthlyPrice": "2.59 € / mjesec",
+        "yearly": "Godišnja",
+        "yearlyPrice": "29.99 € / godina",
+        "subscribe": "Pretplati se",
+        "processing": "Obrada...",
+        "success": "Pretplata uspešno aktivirana!",
+        "error": "Greška prilikom pretplate."
+      },
+
+      "premiumModal": {
+        "title": "Premium sadržaj",
+        "subscribe": "Pretplatite se da vidite Premium sadržaj laganim klikom",
+        "here": "ovde...",
+        "registerInfo": "Ovaj događaj je dostupan samo Premium korisnicima. Da biste vidjeli njegov sadržaj registrujte se",
+        "close": "Zatvori"
+      },
+
+      "map": {
+        "back": "Nazad",
+        "events": "Događaji",
+        "battles": "Bitke",
+        "biographies": "Biografije",
+        "timePeriods": "Vremenski Period",
+        "mapAlt": "Mapa"
+      } 
+  }
+  

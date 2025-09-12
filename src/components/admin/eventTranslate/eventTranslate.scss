@@ -1,0 +1,152 @@
+.event-translate {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9fafc;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2f3e46;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3a4a52;
+    margin-bottom: 0.8rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    select,
+    input,
+    textarea {
+      padding: 0.9rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+        outline: none;
+        transform: scale(1.02);
+      }
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+  }
+
+  .translation-form {
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .save-btn {
+    margin-top: 1rem;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+    }
+
+    &:disabled {
+      background: #a5d6a7;
+      cursor: not-allowed;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .translation-form {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin: 1rem;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    .form-group {
+      select,
+      input,
+      textarea {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.9rem;
+      }
+    }
+
+    .save-btn {
+      width: 100%;
+      padding: 0.8rem;
+    }
+  }
+}

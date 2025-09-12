@@ -1,10 +1,12 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./subscription.scss";
 import { useAuth } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const Subscription: React.FC = () => {
-  const {accessToken} = useAuth()
+  const { accessToken } = useAuth();
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -24,13 +26,12 @@ const Subscription: React.FC = () => {
       );
 
       if (response.data?.approvalUrl) {
-        // Ako backend vrati PayPal link ili slično
         window.location.href = response.data.approvalUrl;
       } else {
-        setMessage("Pretplata uspešno aktivirana!");
+        setMessage(t("subscriptionPage.success"));
       }
     } catch (error: any) {
-      setMessage(error.response?.data?.message || "Greška prilikom pretplate.");
+      setMessage(error.response?.data?.message || t("subscriptionPage.error"));
     } finally {
       setLoading(false);
     }
@@ -39,34 +40,31 @@ const Subscription: React.FC = () => {
   return (
     <section className="subscription">
       <div className="subscription-container">
-        <h2>Izaberi plan pretplate</h2>
-        <p>
-          Uživaj u svim premium sadržajima i otključaj ceo istorijski vodič. Možeš
-          otkazati pretplatu bilo kada.
-        </p>
+        <h2>{t("subscriptionPage.title")}</h2>
+        <p>{t("subscriptionPage.description")}</p>
 
         <div className="plans">
           <div className="plan-card">
-            <h3>Mjesečna</h3>
-            <p className="price">2.59 € / mjesec</p>
+            <h3>{t("subscriptionPage.monthly")}</h3>
+            <p className="price">{t("subscriptionPage.monthlyPrice")}</p>
             <button
               className="btn"
               onClick={() => handleSubscribe("monthly")}
               disabled={loading}
             >
-              {loading ? "Obrada..." : "Pretplati se"}
+              {loading ? t("subscriptionPage.processing") : t("subscriptionPage.subscribe")}
             </button>
           </div>
 
           <div className="plan-card popular">
-            <h3>Godišnja</h3>
-            <p className="price">29.99 € / godina</p>
+            <h3>{t("subscriptionPage.yearly")}</h3>
+            <p className="price">{t("subscription.yearlyPrice")}</p>
             <button
               className="btn"
               onClick={() => handleSubscribe("yearly")}
               disabled={loading}
             >
-              {loading ? "Obrada..." : "Pretplati se"}
+              {loading ? t("subscriptionPage.processing") : t("subscriptionPage.subscribe")}
             </button>
           </div>
         </div>

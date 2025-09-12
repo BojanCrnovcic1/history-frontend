@@ -1,4 +1,5 @@
 import type { Events } from "./Events";
+import type { TimePeriodTranslations } from "./TimePeriodTranslations";
 
 export interface TimePeriods {
     timePeriodId?: number;
@@ -10,4 +11,5 @@ export interface TimePeriods {
     parent: TimePeriods | null;
     children: TimePeriods[];
     events: Events[];
+    translations?: TimePeriodTranslations[];
 }

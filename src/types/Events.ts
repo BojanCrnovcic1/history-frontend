@@ -1,3 +1,4 @@
+import type { EventTranslations } from "./EventTranslations";
 import type { EventTypes } from "./EventTypes";
 import type { Locations } from "./Locations";
 import type { Media } from "./Media";
@@ -17,4 +18,5 @@ export interface Events {
     eventType: EventTypes;
     location: Locations;
     media: Media[];
+    translates: EventTranslations[];
 }

@@ -1,0 +1,157 @@
+{
+    "subscription": "Subscription",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "musicOn": "Music: On",
+    "musicOff": "Music: Off",
+    "heroText": "Your interactive map and guide through the most important events in history. Travel through time, discover fascinating stories, and learn in a completely new way.",
+    "heroButton": "Start the journey",
+
+    "footerAboutTitle": "HistoTrails",
+    "footerAboutText": "HistoTrails is an interactive map and guide through the most important events in history. We connect the past and the present through educational content, multimedia, and engaging stories.", 
+    "footerInfoTitle": "Information",
+    "footerInfoTerms": "Terms of Service",
+    "footerInfoPrivacy": "Privacy Policy",
+    "footerInfoSources": "Sources",
+    "footerContactTitle": "Contact",
+    "footerContactEmail": "Email",
+    "footerSocialTitle": "Follow us",
+    "footerBottom": "All rights reserved.",
+
+        "terms": {
+          "back": "← Back",
+          "title": "Terms of Use",
+          "welcome": "Welcome to the history reading app. By using our application, you accept the terms of use stated in this document. Please read all items carefully before using the app.",
+          "section1Title": "1. Description of the Application",
+          "section1Text": "Our app provides an interactive map of the ancient world around the Mediterranean – Europe, North Africa, and the Middle East with Mesopotamia. The map highlights key locations with events and battles that users can explore. Clicking on a location opens a modal with detailed information about the event.",
+          "section2Title": "2. Time Cycles",
+          "section2Text": "Users have the ability to choose a time cycle (Stone Age, Bronze Age, Early Antiquity, etc.). This filters the events and locations displayed on the map.",
+          "section3Title": "3. Rules of Use",
+          "rule1": "You may use the app exclusively for educational purposes.",
+          "rule2": "Copying and distribution of content without the author’s permission is prohibited.",
+          "rule3": "Users agree not to misuse the application.",
+          "section4Title": "4. Changes",
+          "section4Text": "These terms of use may be updated periodically. You will be notified within the app of any significant changes.",
+          "section5Title": "5. Contact",
+          "section5Text": "For any questions regarding these terms, please contact us via email:"
+        },
+        "privacy": {
+            "back": "← Back",
+            "title": "Privacy Policy",
+            "section1Title": "1. Introduction",
+            "section1Text": "This history reading app respects your privacy and is committed to using your data solely for the purpose of providing app services. By using the app, you accept the rules stated in this Privacy Policy.",
+            "section2Title": "2. Data We Collect",
+            "section2Text": "To access premium content, you need to create a user account. During registration, we collect:",
+            "email": "Email address",
+            "password": "Password",
+            "fullname": "First and last name (optional)",
+            "section2Note": "This data is used only for authentication and access to the app.",
+            "section3Title": "3. Payments",
+            "section3Text1": "Payments are processed through secure third-party services (e.g., Google Play, App Store, or other authorized payment providers).",
+            "section3Text2": "➡️ The app **does not collect or store your card information**.",
+            "section4Title": "4. Cancellation and Refund Policy",
+            "rule1": "Users may cancel their subscription at any time through the platform where the purchase was made.",
+            "rule2": "Payments are **non-refundable** – no refunds are possible for already paid periods.",
+            "rule3": "After cancellation, users retain access to premium content until the end of the already paid period.",
+            "section5Title": "5. Cookies",
+            "section5Text": "The app currently does not use cookies. If we introduce cookies in the future to improve service, users will be notified and may choose to consent or decline.",
+            "section6Title": "6. Data Sharing",
+            "section6Text": "Your personal data is not shared with third parties unless required by law.",
+            "section7Title": "7. Security",
+            "section7Text": "We take appropriate technical and organizational measures to protect your data from unauthorized access, loss, or misuse.",
+            "section8Title": "8. Contact",
+            "section8Text": "For any questions regarding privacy and your data, you can contact us via email:",
+            "contact": "📧 support@istorija-app.com"
+        },
+
+        "sources": {
+            "back": "Back",
+            "title": "Sources",
+            "intro": "Here we list the sources of music and historical data used in the application.",
+            "musicTitle": "Music",
+            "musicText1": "The music used in the app serves as ambient accompaniment and has no commercial use. All compositions are royalty-free or used with the author’s permission.",
+            "musicExample": "Example: \"Ancient Echoes\" – John Doe (royalty free music).",
+            "historyTitle": "Historical Data Sources",
+            "history1": "Herodotus – Histories",
+            "history2": "Thucydides – History of the Peloponnesian War",
+            "history3": "Archaeological findings – British Museum",
+            "history4": "Literature on Ancient Egypt and Mesopotamia",
+            "history5": "Various historical atlases and encyclopedias"
+          },
+        
+          "loginPage": {
+            "back": "← Back",
+            "title": "Login",
+            "emailPlaceholder": "Email address",
+            "passwordPlaceholder": "Password",
+            "buttonLoading": "Logging in...",
+            "buttonSubmit": "Login",
+            "error": "Login error",
+            "noAccount": "Don’t have an account? Register",
+            "forgotPassword": "Forgot password?"
+          },
+            "registerPage": {
+              "title": "Register",
+              "info": "Registration is completely free. Whenever you want, you can purchase premium content and unlock additional features.",
+              "username": "Username",
+              "email": "Email",
+              "password": "Password",
+              "button": "Sign up",
+              "alreadyAccount": "Already have an account?",
+              "loginHere": "Log in here...",
+              "success": "Registration successful! Please confirm your account via email in order to log in and reserve your dream event.",
+              "error": "An error occurred during registration. Please try again.",
+              "fillFields": "Please fill in all required fields.",
+              "back": "Back"
+            },
+            "resetPassword": {
+              "titleStep1": "Forgot password",
+              "placeholderEmail": "Enter your email",
+              "sendCode": "Send code",
+          
+              "titleStep2": "Enter the code and new password",
+              "placeholderCode": "Code from email",
+              "placeholderNewPassword": "New password",
+              "confirm": "Confirm",
+          
+              "titleStep3": "Password successfully reset.",
+              "backToLogin": "Back to login",
+          
+              "errorRequest": "Error sending request",
+              "errorReset": "Error resetting password"
+            },
+
+            "subscriptionPage": {
+              "title": "Choose your subscription plan",
+              "description": "Enjoy all premium content and unlock the full historical guide. You can cancel anytime.",
+              "monthly": "Monthly",
+              "monthlyPrice": "€2.59 / month",
+              "yearly": "Yearly",
+              "yearlyPrice": "€29.99 / year",
+              "subscribe": "Subscribe",
+              "processing": "Processing...",
+              "success": "Subscription activated successfully!",
+              "error": "Error during subscription."
+            },
+
+            "premiumModal": {
+              "title": "Premium Content",
+              "subscribe": "Subscribe to view Premium content with just one click",
+              "here": "here...",
+              "registerInfo": "This event is available only to Premium users. To see its content, please register",
+              "close": "Close"
+            },
+            
+            "map": {
+             "back": "Back",
+             "events": "Events",
+             "battles": "Battles",
+             "biographies": "Biographies",
+             "timePeriods": "Time Period",
+             "mapAlt": "Map"
+            }
+  
+        
+  }
+  
